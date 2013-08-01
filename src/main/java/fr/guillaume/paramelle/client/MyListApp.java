@@ -54,8 +54,10 @@ public class MyListApp implements EntryPoint {
 			}
 		}) ;
 		
+		ListView listView = new ListView() ;
+		
 		// animate
-		animationHelper.goTo(byePanel, Animation.SLIDE);
+		animationHelper.goTo(listView, Animation.SLIDE);
 
 	}
 }

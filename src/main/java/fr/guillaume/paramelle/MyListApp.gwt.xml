@@ -7,10 +7,11 @@
   "http://google-web-toolkit.googlecode.com/svn/tags/2.5.1/distro-source/core/src/gwt-module.dtd">
 <module rename-to='mylistapp'>
   <inherits name='com.googlecode.mgwt.MGWT'/>
+  <inherits name='com.allen_sauer.gwt.dnd.gwt-dnd'/>
   
   <!-- Other module inherits                                      -->
   
-  <set-property name="user.agent" value="safari"></set-property>
+  <set-property name="user.agent" value="gecko1_8,safari" />
   <set-property name="mgwt.os" value="iphone" /> 
 
   <!-- Specify the app entry point class.                         -->
