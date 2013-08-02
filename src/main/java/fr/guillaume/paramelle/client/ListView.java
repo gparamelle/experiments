@@ -7,33 +7,50 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
-import com.google.gwt.user.client.ui.TextBox;
+import com.google.gwt.user.client.ui.SimplePanel;
+import com.google.gwt.user.client.ui.Widget;
+import com.googlecode.mgwt.ui.client.widget.MTextBox;
+
+import fr.guillaume.paramelle.client.resources.AppClientBundle;
 
 public class ListView extends Composite {
 
 	private FlowPanel panel ;
-	private TextBox inputField ;
+	private MTextBox inputField ;
 	
 	public ListView() {
 		panel = new FlowPanel() ;
-		inputField = new TextBox() ;
+		inputField = new MTextBox() ;
+		inputField.addStyleName(AppClientBundle.INSTANCE.css().inputField());
 		
 		panel.add(inputField);
 		
 		final PickupDragController dragController = new PickupDragController(RootPanel.get(), false) ;
+		dragController.setBehaviorConstrainedToBoundaryPanel(true);
 		MyFlowPanelDropController flowPanelDropController = new MyFlowPanelDropController(panel) ;
 		dragController.registerDropController(flowPanelDropController);
 		
 		inputField.addBlurHandler(new BlurHandler() {
 			@Override public void onBlur(BlurEvent event) {
-				Label item = new Label(inputField.getText()) ;
+				SimplePanel w = createItem(inputField.getText()) ;
+				dragController.makeDraggable(w, w.getWidget());
+				panel.insert(w, 0);
+				
 				inputField.setText("");
-				dragController.makeDraggable(item);
-				panel.insert(item, 0);
 			}
 		}) ;
 		
 		initWidget(panel);
+	}
+	
+	private SimplePanel createItem(String text) {
+		
+		Label item = new Label(text) ;
+		SimplePanel simplePanel = new SimplePanel(item) ;
+		
+		item.addStyleName(AppClientBundle.INSTANCE.css().listItem());
+		
+		return simplePanel ;
 	}
 	
 }

@@ -3,12 +3,13 @@ package fr.guillaume.paramelle.client;
 import com.allen_sauer.gwt.dnd.client.DragContext;
 import com.allen_sauer.gwt.dnd.client.drop.FlowPanelDropController;
 import com.allen_sauer.gwt.dnd.client.util.DOMUtil;
-import com.allen_sauer.gwt.dnd.client.util.DragClientBundle;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.Widget;
+
+import fr.guillaume.paramelle.client.resources.AppClientBundle;
 
 public class MyFlowPanelDropController extends FlowPanelDropController {
 
@@ -28,7 +29,7 @@ public class MyFlowPanelDropController extends FlowPanelDropController {
 	    // Use two widgets so that setPixelSize() consistently affects dimensions
 	    // excluding positioner border in quirks and strict modes
 	    SimplePanel outer = new SimplePanel();
-	    outer.addStyleName(DragClientBundle.INSTANCE.css().positioner());
+	    outer.addStyleName(AppClientBundle.INSTANCE.css().itemPositioner());
 
 	    // place off screen for border calculation
 	    RootPanel.get().add(outer, -500, -500);
