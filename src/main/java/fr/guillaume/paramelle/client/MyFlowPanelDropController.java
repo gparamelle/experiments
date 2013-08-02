@@ -3,6 +3,7 @@ package fr.guillaume.paramelle.client;
 import com.allen_sauer.gwt.dnd.client.DragContext;
 import com.allen_sauer.gwt.dnd.client.drop.FlowPanelDropController;
 import com.allen_sauer.gwt.dnd.client.util.DOMUtil;
+import com.allen_sauer.gwt.dnd.client.util.LocationWidgetComparator;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
@@ -18,11 +19,18 @@ public class MyFlowPanelDropController extends FlowPanelDropController {
 	   */
 	private static final Label DUMMY_LABEL_IE_QUIRKS_MODE_OFFSET_HEIGHT = new Label("x");
 
+	private ActionOnDrop actionOnDrop ;
 	
-	public MyFlowPanelDropController(FlowPanel dropTarget) {
+	public MyFlowPanelDropController(FlowPanel dropTarget, ActionOnDrop actionOnDrop) {
 		super(dropTarget);
+		this.actionOnDrop = actionOnDrop ;
 	}
 	
+	
+	 @Override
+	  protected LocationWidgetComparator getLocationWidgetComparator() {
+	    return LocationWidgetComparator.LEFT_HALF_COMPARATOR ;
+	  }
 	
 	@Override
 	  protected Widget newPositioner(DragContext context) {
@@ -52,5 +60,19 @@ public class MyFlowPanelDropController extends FlowPanelDropController {
 	    outer.setWidget(inner);
 
 	    return outer;
+	}
+	
+	
+	
+	@Override
+	public void onDrop(DragContext context) {
+		super.onDrop(context);
+		actionOnDrop.onDrop();
+	}
+
+
+
+	public interface ActionOnDrop {
+		public void onDrop() ;
 	}
 }
