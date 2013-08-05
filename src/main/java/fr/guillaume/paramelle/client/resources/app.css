@@ -1,0 +1,36 @@
+
+
+.listItem {
+	font-family: arial;
+	font-size: 18pt ;
+	color: black ;
+	margin: 8px 8px 8px 16px;
+}
+
+
+
+.itemPositioner {
+	
+}
+
+.inputField {
+	
+}
+
+.body {
+	background-size: 100% 7px ;
+	height: 100% ; width: 100% ;
+	position: absolute;
+}
+
+@if user.agent safari {
+	.body {
+		background-image: literal('-webkit-gradient(linear, left top, right top, from(#9999ff), to(#ffffff), color-stop(1, #ffffff), color-stop(1, #ffffff))');
+	}
+}
+
+@if user.agent gecko1_8 {
+	.body {
+		background-image: literal('-moz-linear-gradient(left center , #9999ff, #ffffff 100%)');
+	}
+}

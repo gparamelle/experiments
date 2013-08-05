@@ -1,0 +1,7 @@
+
+
+- IT 1
+
+	- refactoriser avec ioc
+	- ajouter un logguer
+	- voir s'il y a pertes de perfs. ou comment rendre plus fluide

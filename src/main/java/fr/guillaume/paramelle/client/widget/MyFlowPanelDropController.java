@@ -1,4 +1,4 @@
-package fr.guillaume.paramelle.client;
+package fr.guillaume.paramelle.client.widget;
 
 import com.allen_sauer.gwt.dnd.client.DragContext;
 import com.allen_sauer.gwt.dnd.client.drop.FlowPanelDropController;
@@ -69,8 +69,6 @@ public class MyFlowPanelDropController extends FlowPanelDropController {
 		super.onDrop(context);
 		actionOnDrop.onDrop();
 	}
-
-
 
 	public interface ActionOnDrop {
 		public void onDrop() ;

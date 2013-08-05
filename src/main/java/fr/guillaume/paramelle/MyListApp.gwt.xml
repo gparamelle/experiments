@@ -15,7 +15,7 @@
   <set-property name="mgwt.os" value="iphone" /> 
 
   <!-- Specify the app entry point class.                         -->
-  <entry-point class='fr.guillaume.paramelle.client.MyListApp'/>
+  <entry-point class='fr.guillaume.paramelle.client.AppEntryPoint'/>
 
   <!-- Specify the paths for translatable code                    -->
   <source path='client'/>
